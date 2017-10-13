@@ -1,0 +1,134 @@
+/**
+ * Featherlight – ultra slim jQuery lightbox
+ * Version 1.7.0 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2016, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+.featherlight {
+	display     : none;
+
+	/* dimensions: spanning the background from edge to edge */
+	position    : fixed;
+	top         : 0; right : 0; bottom : 0; left : 0;
+	z-index     : 2147483647; /* z-index needs to be >= elements on the site. */
+
+	/* position: centering content */
+	text-align  : center;
+
+	/* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+	white-space : nowrap;
+
+	/* styling */
+	cursor      : pointer;
+	background  : $grey--darker;
+	/* IE8 "hack" for nested featherlights */
+	background  : rgba($black, 0);
+
+	/* support for nested featherlights. Does not work in IE8 (use JS to fix) */
+	&:last-of-type {
+		background : rgba($black, 0.8);
+	}
+
+	&:before {
+		@include inline-block;
+		content        : '';
+		height         : 100%;
+	}
+
+	.featherlight-content {
+		@include inline-block;
+		position       : relative;
+		text-align     : left;
+		overflow       : auto;
+		max-height     : 95%;
+		cursor         : auto;
+		white-space    : normal;
+		width          : 100%;
+		max-width      : 122.4rem;
+		padding        : 0 2rem;
+		margin         : 0 auto;
+
+		@include bp($scr--wrappad) {
+			padding:0 10rem;
+		}
+
+		@include bp($scr--wrap, max-width) {
+			margin-left  : 0;
+			margin-right : 0;
+			max-height   : 98%;
+		}
+	}
+
+	.featherlight-inner {
+		/* make sure its visible */
+		display : block;
+	}
+
+	.featherlight-close-icon {
+		@include icomoon(icon-cross, $replace:true) {
+			display : block;
+			font-size:2rem;
+		}
+		position    : absolute;
+		z-index     : 9999;
+		top         : 2rem;
+		right       : 4rem;
+
+		/* styling */
+		cursor      : pointer;
+		text-align  : center;
+		background  : none;
+		color       : $black;
+		border      : none;
+		padding     : 1rem;
+
+		/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+		&::-moz-focus-inner {
+			border  : 0;
+			padding : 0;
+		}
+
+		@include bp($scr--wrappad) {
+			right:12rem;
+		}
+	}
+
+	.featherlight-image {
+		width : 100%;
+	}
+
+	iframe {
+		border : none;
+	}
+
+	* {
+		box-sizing : border-box;
+	}
+}
+
+.featherlight--thin {
+
+	.featherlight-content {
+		max-width : 64rem;
+		margin    : 0 auto;
+	}
+
+}
+
+.featherlight--medium {
+
+	.featherlight-content {
+		max-width:96rem;
+		margin:0 auto;
+	}
+
+}
+
+.featherlight-iframe .featherlight-content {
+	/* removed the border for image croping since iframe is edge to edge */
+	border-bottom              : 0;
+	padding                    : 0;
+	-webkit-overflow-scrolling : touch;
+	overflow-y                 : scroll;
+}

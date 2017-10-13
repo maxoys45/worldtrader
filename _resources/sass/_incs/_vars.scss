@@ -1,0 +1,53 @@
+// COLORS
+
+$white: #FFFFFF;
+$light: #fcfcfc;
+$dark: #333333;
+$darker: #222222;
+$black: #000000;
+$blue: blue;
+$red: red;
+$green: green;
+$pink: pink;
+$yellow: #ffde00;
+$orange: orange;
+$teal: teal;
+$brown: brown;
+$purple: purple;
+$gold: #f3b700;
+$winner : #a1d7a0;
+$loser : #e6aaaa;
+$cyan: #20c5e3;
+
+// FONTS
+
+$font--default : 'Roboto', sans-serif;
+
+// WEIGHTS
+
+$font--light : 300;
+$font--reg : 400;
+$font--med : 500;
+
+// SCREEN SIZES
+
+$scr--xsmall : 480;
+$scr--small : 640;
+$scr--medium : 768;
+$scr--std: 960;
+$scr--wrap : 1024;
+$scr--wrappad : 1224;
+
+// MIXIN WRAP
+
+$wrap : 1224; // 1024 + 100px padding either side
+
+// MISC
+
+$fontSize--default : 2rem;
+$fontSize--small : 1.5rem;
+$lineHeight--default : 1.3;
+$radius : .2rem;
+$vspacer : 4rem;
+$imgassets : '../img/';
+$duration : .1s;

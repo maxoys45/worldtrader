@@ -1,0 +1,154 @@
+/* MAIN STYLES */
+
+*, *:before, *:after {
+	box-sizing:border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	appearance:none;
+	margin:0;
+}
+
+html {
+	height:100%;
+	font-size:10px;
+}
+
+body {
+	font-family:'Open Sans';
+	height:100%;
+	line-height:1;
+	color:$dark;
+	background:$light;
+	font-size:1.6rem;
+}
+
+.allContent {
+	padding:0 1rem;
+	height:100%;
+//	padding:10px;
+	text-align:center;
+//	max-width: 960px;
+//	margin-left:auto;
+//	margin-right:auto;
+
+	@include bp($scr--medium) {
+//		padding:20px;
+	}
+
+	.inside {
+		height:100%;
+	}
+}
+
+.title {
+	padding: 1rem 2rem;
+    background: $dark;
+    color: $white;
+    font-size: 2rem;
+    margin:0 -1rem;
+}
+
+.updateBtn {
+	background:$gold;
+	color:$dark;
+	padding:2rem;
+	width:100%;
+	font-size:2rem;
+	border:none;
+	outline:none;
+	cursor:pointer;
+	margin:1rem 0;
+}
+
+.autoUpdate {
+	@extend .hiddenInputs;
+}
+
+.autoUpdate__label {
+	background:darken($light, 10%);
+	color:darken($light, 20%);
+	padding:1rem;
+	display:block;
+	margin-bottom:1rem;
+	cursor:pointer;
+
+	&.active {
+		color:$dark;
+		background-color:lighten($green, 20%);
+	}
+}
+
+.stocks {
+	@include flexbox-container($wrap:wrap);
+}
+
+.stock {
+	@include flexbox-item();
+	width:48%;
+	border:1px solid $dark;
+	margin-bottom:1rem;
+	border-radius:3px;
+	overflow:hidden;
+
+	&:nth-child(2n) {
+		margin-left:4%;
+	}
+}
+
+.stock__title {
+	background:lighten($dark, 10%);
+	color:$white;
+	padding:.5rem;
+}
+
+.stock__value {
+	background:darken($light, 5%);
+	padding:1rem;
+}
+
+.stock__price {
+	@include inline-block;
+	margin-right:.5rem;
+}
+
+.stock__value--price {
+	position:relative;
+
+	&:after {
+		@include transition(.25s, opacity);
+		content:'';
+		position:absolute;
+		right:.5rem;
+		top:50%;
+		transform:translateY(-50%);
+		width:1.5rem;
+		height:1.5rem;
+		display:block;
+		background-size:100%;
+		background-repeat:no-repeat;
+		opacity:0;
+	}
+
+	&.higher:after {
+		background-image:url('../img/arrow-up.svg');
+		opacity:1;
+	}
+
+	&.lower:after {
+		background-image:url('../img/arrow-down.svg');
+		opacity:1;
+	}
+
+	&.neutral:after {
+		background-image:url('../img/arrow-right.svg');
+		opacity:1;
+	}
+
+}
+
+.stock__price__img {
+	@include inline-block;
+	width:2rem;
+}
